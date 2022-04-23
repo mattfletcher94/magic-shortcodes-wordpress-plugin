@@ -9,6 +9,7 @@ const props = defineProps({
 
 const emit = defineEmits<{
   (event: 'change', val: string): void
+  (event: 'blur', val: string): void
 }>()
 
 </script>
@@ -17,5 +18,6 @@ const emit = defineEmits<{
     :value="props.value"
     class="tw-relative tw-block tw-w-full"
     @input="(e) => emit('change', (e.target as HTMLInputElement).value)"
+    @blur="(e) => emit('blur', (e.target as HTMLInputElement).value)"
   >
 </template>

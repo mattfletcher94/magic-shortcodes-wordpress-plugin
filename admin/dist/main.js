@@ -3869,6 +3869,38 @@
       prevVNode
     ]);
   }
+  function renderList(source, renderItem, cache, index2) {
+    let ret;
+    const cached = cache && cache[index2];
+    if (isArray(source) || isString(source)) {
+      ret = new Array(source.length);
+      for (let i = 0, l = source.length; i < l; i++) {
+        ret[i] = renderItem(source[i], i, void 0, cached && cached[i]);
+      }
+    } else if (typeof source === "number") {
+      ret = new Array(source);
+      for (let i = 0; i < source; i++) {
+        ret[i] = renderItem(i + 1, i, void 0, cached && cached[i]);
+      }
+    } else if (isObject(source)) {
+      if (source[Symbol.iterator]) {
+        ret = Array.from(source, (item, i) => renderItem(item, i, void 0, cached && cached[i]));
+      } else {
+        const keys = Object.keys(source);
+        ret = new Array(keys.length);
+        for (let i = 0, l = keys.length; i < l; i++) {
+          const key = keys[i];
+          ret[i] = renderItem(source[key], key, i, cached && cached[i]);
+        }
+      }
+    } else {
+      ret = [];
+    }
+    if (cache) {
+      cache[index2] = ret;
+    }
+    return ret;
+  }
   function renderSlot(slots, name, props = {}, fallback, noSlotted) {
     if (currentRenderingInstance.isCE) {
       return createVNode("slot", name === "default" ? null : { name }, fallback && fallback());
@@ -4587,7 +4619,7 @@
     leaveActiveClass: String,
     leaveToClass: String
   };
-  Transition.props = /* @__PURE__ */ extend({}, BaseTransition.props, DOMTransitionPropsValidators);
+  const TransitionPropsValidators = Transition.props = /* @__PURE__ */ extend({}, BaseTransition.props, DOMTransitionPropsValidators);
   const callHook = (hook, args = []) => {
     if (isArray(hook)) {
       hook.forEach((h2) => h2(...args));
@@ -4792,6 +4824,112 @@
   }
   function forceReflow() {
     return document.body.offsetHeight;
+  }
+  const positionMap = /* @__PURE__ */ new WeakMap();
+  const newPositionMap = /* @__PURE__ */ new WeakMap();
+  const TransitionGroupImpl = {
+    name: "TransitionGroup",
+    props: /* @__PURE__ */ extend({}, TransitionPropsValidators, {
+      tag: String,
+      moveClass: String
+    }),
+    setup(props, { slots }) {
+      const instance = getCurrentInstance();
+      const state = useTransitionState();
+      let prevChildren;
+      let children;
+      onUpdated(() => {
+        if (!prevChildren.length) {
+          return;
+        }
+        const moveClass = props.moveClass || `${props.name || "v"}-move`;
+        if (!hasCSSTransform(prevChildren[0].el, instance.vnode.el, moveClass)) {
+          return;
+        }
+        prevChildren.forEach(callPendingCbs);
+        prevChildren.forEach(recordPosition);
+        const movedChildren = prevChildren.filter(applyTranslation);
+        forceReflow();
+        movedChildren.forEach((c) => {
+          const el = c.el;
+          const style = el.style;
+          addTransitionClass(el, moveClass);
+          style.transform = style.webkitTransform = style.transitionDuration = "";
+          const cb = el._moveCb = (e) => {
+            if (e && e.target !== el) {
+              return;
+            }
+            if (!e || /transform$/.test(e.propertyName)) {
+              el.removeEventListener("transitionend", cb);
+              el._moveCb = null;
+              removeTransitionClass(el, moveClass);
+            }
+          };
+          el.addEventListener("transitionend", cb);
+        });
+      });
+      return () => {
+        const rawProps = toRaw(props);
+        const cssTransitionProps = resolveTransitionProps(rawProps);
+        let tag = rawProps.tag || Fragment;
+        prevChildren = children;
+        children = slots.default ? getTransitionRawChildren(slots.default()) : [];
+        for (let i = 0; i < children.length; i++) {
+          const child = children[i];
+          if (child.key != null) {
+            setTransitionHooks(child, resolveTransitionHooks(child, cssTransitionProps, state, instance));
+          }
+        }
+        if (prevChildren) {
+          for (let i = 0; i < prevChildren.length; i++) {
+            const child = prevChildren[i];
+            setTransitionHooks(child, resolveTransitionHooks(child, cssTransitionProps, state, instance));
+            positionMap.set(child, child.el.getBoundingClientRect());
+          }
+        }
+        return createVNode(tag, null, children);
+      };
+    }
+  };
+  const TransitionGroup = TransitionGroupImpl;
+  function callPendingCbs(c) {
+    const el = c.el;
+    if (el._moveCb) {
+      el._moveCb();
+    }
+    if (el._enterCb) {
+      el._enterCb();
+    }
+  }
+  function recordPosition(c) {
+    newPositionMap.set(c, c.el.getBoundingClientRect());
+  }
+  function applyTranslation(c) {
+    const oldPos = positionMap.get(c);
+    const newPos = newPositionMap.get(c);
+    const dx = oldPos.left - newPos.left;
+    const dy = oldPos.top - newPos.top;
+    if (dx || dy) {
+      const s = c.el.style;
+      s.transform = s.webkitTransform = `translate(${dx}px,${dy}px)`;
+      s.transitionDuration = "0s";
+      return c;
+    }
+  }
+  function hasCSSTransform(el, root, moveClass) {
+    const clone = el.cloneNode();
+    if (el._vtc) {
+      el._vtc.forEach((cls) => {
+        cls.split(/\s+/).forEach((c) => c && clone.classList.remove(c));
+      });
+    }
+    moveClass.split(/\s+/).forEach((c) => c && clone.classList.add(c));
+    clone.style.display = "none";
+    const container = root.nodeType === 1 ? root : root.parentNode;
+    container.appendChild(clone);
+    const { hasTransform } = getTransitionInfo(clone);
+    container.removeChild(clone);
+    return hasTransform;
   }
   const rendererOptions = extend({ patchProp }, nodeOps);
   let renderer;
@@ -6645,14 +6783,15 @@
         default: ""
       }
     },
-    emits: ["change"],
+    emits: ["change", "blur"],
     setup(__props, { emit }) {
       const props = __props;
       return (_ctx, _cache) => {
         return openBlock(), createElementBlock("input", {
           value: props.value,
           class: "tw-relative tw-block tw-w-full",
-          onInput: _cache[0] || (_cache[0] = (e) => emit("change", e.target.value))
+          onInput: _cache[0] || (_cache[0] = (e) => emit("change", e.target.value)),
+          onBlur: _cache[1] || (_cache[1] = (e) => emit("blur", e.target.value))
         }, null, 40, _hoisted_1$2);
       };
     }
@@ -6715,6 +6854,7 @@
     }
   });
   var WPFormGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-bbb68bcc"]]);
+  var ViewCreateShortcode_vue_vue_type_style_index_0_lang = "";
   const _hoisted_1 = { class: "tw-flex tw-gap-4" };
   const _hoisted_2 = { class: "tw-flex-1" };
   const _hoisted_3 = /* @__PURE__ */ createBaseVNode("svg", {
@@ -6738,47 +6878,70 @@
   const _hoisted_6 = { class: "tw-ml-auto" };
   const _hoisted_7 = /* @__PURE__ */ createTextVNode(" Save Changes ");
   const _hoisted_8 = { class: "tw-relative tw-block tw-w-full tw-min-h-[400px] tw-p-6" };
-  const _hoisted_9 = { class: "tw-w-full md:tw-w-[350px]" };
-  const _hoisted_10 = /* @__PURE__ */ createBaseVNode("div", null, [
+  const _hoisted_9 = { class: "tw-bg-gray-100 tw-rounded-md tw-p-2 tw-mb-6" };
+  const _hoisted_10 = /* @__PURE__ */ createBaseVNode("span", null, "[", -1);
+  const _hoisted_11 = { class: "tw-ml-1" };
+  const _hoisted_12 = { class: "tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-primary-100" };
+  const _hoisted_13 = /* @__PURE__ */ createTextVNode(' =" ');
+  const _hoisted_14 = { class: "tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-secondary-100" };
+  const _hoisted_15 = /* @__PURE__ */ createTextVNode(' " ');
+  const _hoisted_16 = /* @__PURE__ */ createBaseVNode("span", { class: "tw-ml-1" }, "/]", -1);
+  const _hoisted_17 = { class: "tw-w-full md:tw-w-[350px]" };
+  const _hoisted_18 = /* @__PURE__ */ createBaseVNode("div", null, [
     /* @__PURE__ */ createBaseVNode("h2", { class: "!tw-p-0" }, " Attributes ")
   ], -1);
-  const _hoisted_11 = { class: "tw-ml-auto" };
-  const _hoisted_12 = /* @__PURE__ */ createTextVNode(" Add Attribute ");
-  const _hoisted_13 = { class: "tw-relative tw-block tw-w-full" };
-  const _hoisted_14 = { class: "tw-relative tw-block" };
-  const _hoisted_15 = { class: "tw-relative tw-block tw-w-full tw-border-b tw-border-b-wp-border-500" };
-  const _hoisted_16 = { class: "tw-flex" };
-  const _hoisted_17 = { class: "tw-flex-1 tw-p-4" };
-  const _hoisted_18 = /* @__PURE__ */ createBaseVNode("div", { class: "tw-w-12 tw-bg-gray-50 tw-border-l tw-border-l-wp-border-500" }, [
-    /* @__PURE__ */ createBaseVNode("div", { class: "tw-flex tw-h-full tw-items-center" }, [
-      /* @__PURE__ */ createBaseVNode("div", { class: "tw-w-full" }, [
-        /* @__PURE__ */ createBaseVNode("a", {
-          href: "#",
-          class: "tw-flex tw-h-12 tw-w-full tw-text-center hover:tw-text-rose-600 focus:tw-text-rose-600"
-        }, [
-          /* @__PURE__ */ createBaseVNode("svg", {
-            class: "tw-m-auto tw-5 tw-h-5",
-            fill: "currentColor",
-            viewBox: "0 0 20 20",
-            xmlns: "http://www.w3.org/2000/svg"
-          }, [
-            /* @__PURE__ */ createBaseVNode("path", {
-              "fill-rule": "evenodd",
-              d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
-              "clip-rule": "evenodd"
-            })
-          ])
-        ])
-      ])
-    ])
+  const _hoisted_19 = { class: "tw-ml-auto" };
+  const _hoisted_20 = /* @__PURE__ */ createTextVNode(" Add Attribute ");
+  const _hoisted_21 = { class: "tw-relative tw-block tw-w-full" };
+  const _hoisted_22 = { class: "tw-relative tw-block tw-overflow-hidden" };
+  const _hoisted_23 = { class: "tw-flex" };
+  const _hoisted_24 = { class: "tw-flex-1 tw-p-4" };
+  const _hoisted_25 = { class: "tw-w-12 tw-bg-gray-50 tw-border-l tw-border-l-wp-border-500" };
+  const _hoisted_26 = { class: "tw-flex tw-h-full tw-items-center" };
+  const _hoisted_27 = { class: "tw-w-full" };
+  const _hoisted_28 = ["onClick"];
+  const _hoisted_29 = /* @__PURE__ */ createBaseVNode("svg", {
+    class: "tw-m-auto tw-5 tw-h-5",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, [
+    /* @__PURE__ */ createBaseVNode("path", {
+      "fill-rule": "evenodd",
+      d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+      "clip-rule": "evenodd"
+    })
   ], -1);
-  const _hoisted_19 = { class: "tw-relative tw-block tw-w-full tw-p-4" };
-  const _hoisted_20 = { class: "tw-mt-4 tw-text-right" };
-  const _hoisted_21 = /* @__PURE__ */ createTextVNode(" Remove ");
-  const _hoisted_22 = /* @__PURE__ */ createTextVNode(" Save Changes ");
+  const _hoisted_30 = [
+    _hoisted_29
+  ];
   const _sfc_main = /* @__PURE__ */ defineComponent({
     setup(__props) {
       const router2 = useRouter();
+      const shortCodeDetails = ref({
+        id: "",
+        title: "my_button",
+        attributes: [
+          { id: "1", name: "text", default: "Click Me" },
+          { id: "2", name: "color", default: "#ff0000" }
+        ]
+      });
+      const removeSpecialCharacters = (value) => {
+        return value.replace(/[^\w\s]/gi, "");
+      };
+      const replaceSpaces = (value) => {
+        return value.replace(/\s+/g, "_");
+      };
+      const handleAddAttribute = () => {
+        shortCodeDetails.value.attributes.push({
+          id: Date.now().toString(),
+          name: "",
+          default: ""
+        });
+      };
+      const handleRemoveAttribute = (attributeId) => {
+        shortCodeDetails.value.attributes = shortCodeDetails.value.attributes.filter((attribute) => attribute.id !== attributeId);
+      };
       return (_ctx, _cache) => {
         return openBlock(), createElementBlock("div", _hoisted_1, [
           createBaseVNode("div", _hoisted_2, [
@@ -6808,13 +6971,35 @@
               ]),
               content: withCtx(() => [
                 createBaseVNode("div", _hoisted_8, [
-                  createVNode(WPFormGroup, { title: "Shortcode name" }, {
+                  createBaseVNode("p", _hoisted_9, [
+                    _hoisted_10,
+                    createBaseVNode("span", _hoisted_11, toDisplayString(shortCodeDetails.value.title), 1),
+                    (openBlock(true), createElementBlock(Fragment, null, renderList(shortCodeDetails.value.attributes.filter((attribute) => attribute.name), (attribute) => {
+                      return openBlock(), createElementBlock("span", {
+                        key: attribute.id,
+                        class: "tw-ml-1"
+                      }, [
+                        createBaseVNode("span", _hoisted_12, toDisplayString(attribute.name.toLowerCase()), 1),
+                        _hoisted_13,
+                        createBaseVNode("span", _hoisted_14, toDisplayString(attribute.default), 1),
+                        _hoisted_15
+                      ]);
+                    }), 128)),
+                    _hoisted_16
+                  ]),
+                  createVNode(WPFormGroup, {
+                    title: "Shortcode Name",
+                    description: "No spaces or special characters allowed",
+                    required: ""
+                  }, {
                     default: withCtx(() => [
                       createVNode(_sfc_main$2, {
                         type: "text",
-                        placeholder: "Short name...",
-                        value: "Button"
-                      })
+                        placeholder: "E.g. 'my_button'",
+                        value: shortCodeDetails.value.title,
+                        onChange: _cache[1] || (_cache[1] = (value) => shortCodeDetails.value.title = value),
+                        onBlur: _cache[2] || (_cache[2] = (value) => shortCodeDetails.value.title = replaceSpaces(removeSpecialCharacters(value)).toLowerCase())
+                      }, null, 8, ["value"])
                     ]),
                     _: 1
                   })
@@ -6823,98 +7008,83 @@
               _: 1
             })
           ]),
-          createBaseVNode("div", _hoisted_9, [
+          createBaseVNode("div", _hoisted_17, [
             createVNode(_sfc_main$6, null, {
               title: withCtx(() => [
-                _hoisted_10,
-                createBaseVNode("div", _hoisted_11, [
-                  createVNode(WPButton, null, {
+                _hoisted_18,
+                createBaseVNode("div", _hoisted_19, [
+                  createVNode(WPButton, { onClick: handleAddAttribute }, {
                     default: withCtx(() => [
-                      _hoisted_12
+                      _hoisted_20
                     ]),
                     _: 1
                   })
                 ])
               ]),
               content: withCtx(() => [
-                createBaseVNode("div", _hoisted_13, [
-                  createBaseVNode("div", _hoisted_14, [
-                    createBaseVNode("div", _hoisted_15, [
-                      createBaseVNode("div", _hoisted_16, [
-                        createBaseVNode("div", _hoisted_17, [
-                          createVNode(WPFormGroup, { title: "Attribute name" }, {
-                            default: withCtx(() => [
-                              createVNode(_sfc_main$2, {
-                                type: "text",
-                                placeholder: "Attribute name...",
-                                value: "Title"
-                              })
-                            ]),
-                            _: 1
-                          }),
-                          createVNode(WPFormGroup, {
-                            class: "tw-mt-2",
-                            title: "Default Value"
-                          }, {
-                            default: withCtx(() => [
-                              createVNode(_sfc_main$2, {
-                                type: "text",
-                                placeholder: "Default value...",
-                                value: "Button"
-                              })
-                            ]),
-                            _: 1
-                          })
-                        ]),
-                        _hoisted_18
-                      ])
-                    ]),
-                    createBaseVNode("div", _hoisted_19, [
-                      createVNode(WPFormGroup, { title: "Attribute name" }, {
-                        default: withCtx(() => [
-                          createVNode(_sfc_main$2, {
-                            type: "text",
-                            placeholder: "Attribute name...",
-                            value: "Title"
-                          })
-                        ]),
-                        _: 1
-                      }),
-                      createVNode(WPFormGroup, {
-                        class: "tw-mt-2",
-                        title: "Default Value"
-                      }, {
-                        default: withCtx(() => [
-                          createVNode(_sfc_main$2, {
-                            type: "text",
-                            placeholder: "Default value...",
-                            value: "Button"
-                          })
-                        ]),
-                        _: 1
-                      }),
-                      createBaseVNode("div", _hoisted_20, [
-                        createVNode(WPButton, {
-                          variant: "secondary",
-                          small: ""
-                        }, {
-                          default: withCtx(() => [
-                            _hoisted_21
-                          ]),
-                          _: 1
-                        }),
-                        createVNode(WPButton, {
-                          class: "!tw-ml-4",
-                          variant: "primary",
-                          small: ""
-                        }, {
-                          default: withCtx(() => [
-                            _hoisted_22
-                          ]),
-                          _: 1
-                        })
-                      ])
-                    ])
+                createBaseVNode("div", _hoisted_21, [
+                  createBaseVNode("div", _hoisted_22, [
+                    createVNode(TransitionGroup, {
+                      name: "attribute-list",
+                      tag: "div",
+                      class: "tw-divide-y tw-divide-wp-border-500"
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(true), createElementBlock(Fragment, null, renderList(shortCodeDetails.value.attributes, (attribute) => {
+                          return openBlock(), createElementBlock("div", {
+                            key: attribute.id,
+                            class: "tw-relative tw-block tw-w-full"
+                          }, [
+                            createBaseVNode("div", _hoisted_23, [
+                              createBaseVNode("div", _hoisted_24, [
+                                createVNode(WPFormGroup, {
+                                  title: "Attribute name",
+                                  required: ""
+                                }, {
+                                  default: withCtx(() => [
+                                    createVNode(_sfc_main$2, {
+                                      type: "text",
+                                      placeholder: "Attribute name...",
+                                      value: attribute.name,
+                                      required: "",
+                                      onChange: (val) => attribute.name = val,
+                                      onBlur: (val) => attribute.name = replaceSpaces(removeSpecialCharacters(val))
+                                    }, null, 8, ["value", "onChange", "onBlur"])
+                                  ]),
+                                  _: 2
+                                }, 1024),
+                                createVNode(WPFormGroup, {
+                                  class: "tw-mt-2",
+                                  title: "Default Value"
+                                }, {
+                                  default: withCtx(() => [
+                                    createVNode(_sfc_main$2, {
+                                      type: "text",
+                                      placeholder: "Default value...",
+                                      value: attribute.default,
+                                      onChange: (val) => attribute.default = val
+                                    }, null, 8, ["value", "onChange"])
+                                  ]),
+                                  _: 2
+                                }, 1024)
+                              ]),
+                              createBaseVNode("div", _hoisted_25, [
+                                createBaseVNode("div", _hoisted_26, [
+                                  createBaseVNode("div", _hoisted_27, [
+                                    createBaseVNode("button", {
+                                      href: "#",
+                                      class: "tw-flex tw-h-12 tw-w-full tw-text-center hover:tw-text-rose-600 focus:tw-text-rose-600",
+                                      onClick: () => handleRemoveAttribute(attribute.id)
+                                    }, _hoisted_30, 8, _hoisted_28)
+                                  ])
+                                ])
+                              ])
+                            ])
+                          ]);
+                        }), 128))
+                      ]),
+                      _: 1
+                    })
                   ])
                 ])
               ]),

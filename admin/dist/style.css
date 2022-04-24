@@ -478,14 +478,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-ml-auto {
   margin-left: auto;
 }
+.tw-mb-6 {
+  margin-bottom: 1.5rem;
+}
+.tw-mt-6 {
+  margin-top: 1.5rem;
+}
 .tw-mt-2 {
   margin-top: 0.5rem;
 }
 .tw-ml-2 {
   margin-left: 0.5rem;
-}
-.tw-mb-6 {
-  margin-bottom: 1.5rem;
 }
 .tw-block {
   display: block;
@@ -508,6 +511,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-h-5 {
   height: 1.25rem;
 }
+.tw-h-\[400px\] {
+  height: 400px;
+}
 .tw-h-full {
   height: 100%;
 }
@@ -519,6 +525,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-h-4 {
   height: 1rem;
+}
+.\!tw-h-\[400px\] {
+  height: 400px !important;
+}
+.\!tw-h-\[300px\] {
+  height: 300px !important;
+}
+.\!tw-h-\[320px\] {
+  height: 320px !important;
+}
+.\!tw-h-\[340px\] {
+  height: 340px !important;
+}
+.\!tw-h-\[330px\] {
+  height: 330px !important;
 }
 .tw-min-h-\[400px\] {
   min-height: 400px;
@@ -602,15 +623,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-rounded-full {
   border-radius: 9999px;
 }
-.tw-border-b {
-  border-bottom-width: 1px;
+.tw-rounded-t-md {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+.tw-border {
+  border-width: 1px;
 }
 .tw-border-l {
   border-left-width: 1px;
 }
-.tw-border-b-wp-border-500 {
+.tw-border-wp-border-500 {
   --tw-border-opacity: 1;
-  border-bottom-color: rgb(195 196 199 / var(--tw-border-opacity));
+  border-color: rgb(195 196 199 / var(--tw-border-opacity));
 }
 .tw-border-l-wp-border-500 {
   --tw-border-opacity: 1;
@@ -624,10 +649,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(34 113 177 / var(--tw-bg-opacity));
 }
-.tw-bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
 .tw-bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -636,13 +657,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(141 192 233 / var(--tw-bg-opacity));
 }
-.tw-bg-green-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
-}
 .tw-bg-secondary-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(252 252 255 / var(--tw-bg-opacity));
+}
+.tw-bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 .tw-bg-opacity-70 {
   --tw-bg-opacity: 0.7;
@@ -664,9 +685,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-p-2 {
   padding: 0.5rem;
-}
-.tw-p-1 {
-  padding: 0.25rem;
 }
 .tw-px-2\.5 {
   padding-left: 0.625rem;
@@ -833,17 +851,152 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.prism-editor-wrapper{width:100%;height:100%;display:flex;align-items:flex-start;overflow:auto;-o-tab-size:1.5em;tab-size:1.5em;-moz-tab-size:1.5em}@media (-ms-high-contrast:active),(-ms-high-contrast:none){.prism-editor-wrapper .prism-editor__textarea{color:transparent!important}.prism-editor-wrapper .prism-editor__textarea::-moz-selection{background-color:#accef7!important;color:transparent!important}.prism-editor-wrapper .prism-editor__textarea::selection{background-color:#accef7!important;color:transparent!important}}.prism-editor-wrapper .prism-editor__container{position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;width:100%}.prism-editor-wrapper .prism-editor__line-numbers{height:100%;overflow:hidden;flex-shrink:0;padding-top:4px;margin-top:0;margin-right:10px}.prism-editor-wrapper .prism-editor__line-number{text-align:right;white-space:nowrap}.prism-editor-wrapper .prism-editor__textarea{position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent}.prism-editor-wrapper .prism-editor__editor,.prism-editor-wrapper .prism-editor__textarea{margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;-moz-tab-size:inherit;-o-tab-size:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-wrap:keep-all;overflow-wrap:break-word;padding:0}.prism-editor-wrapper .prism-editor__textarea--empty{-webkit-text-fill-color:inherit!important}.prism-editor-wrapper .prism-editor__editor{position:relative;pointer-events:none}/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #ccc;
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
+}
+
+.token.punctuation {
+	color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
+}
+
+.token.function-name {
+	color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+	color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+	color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+	color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.inserted {
+	color: green;
+}
 
 .attribute-list-move,
 .attribute-list-enter-active,
 .attribute-list-leave-active {
-  transition: all 0.3s ease!important;
+  transition: all 0.3s ease !important;
 }
 .attribute-list-enter-from,
 .attribute-list-leave-to {
-  transform: translateY(6px)!important;
-  opacity: 0!important;
+  transform: translateY(6px) !important;
+  opacity: 0 !important;
 }
 .attribute-list-leave-active {
-  position: absolute!important;
+  position: absolute !important;
 }
+.code-editor {
+  background: #2d2d2d;
+  color: #ccc;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 5px;
+}
+.prism-editor__textarea:focus {
+  outline: none!important;
+  border-color: transparent!important;
+  box-shadow: none!important;
+}
+

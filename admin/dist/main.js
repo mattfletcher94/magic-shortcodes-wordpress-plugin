@@ -4973,13 +4973,13 @@
     }
     return target;
   };
-  const _sfc_main$7 = {};
-  const _hoisted_1$7 = { class: "wrap" };
-  const _hoisted_2$5 = { id: "poststuff" };
+  const _sfc_main$8 = {};
+  const _hoisted_1$8 = { class: "wrap" };
+  const _hoisted_2$6 = { id: "poststuff" };
   function _sfc_render(_ctx, _cache) {
     const _component_router_view = resolveComponent("router-view");
-    return openBlock(), createElementBlock("div", _hoisted_1$7, [
-      createBaseVNode("div", _hoisted_2$5, [
+    return openBlock(), createElementBlock("div", _hoisted_1$8, [
+      createBaseVNode("div", _hoisted_2$6, [
         createVNode(_component_router_view, null, {
           default: withCtx(({ Component }) => [
             createVNode(Transition, {
@@ -4997,7 +4997,7 @@
       ])
     ]);
   }
-  var App = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-ad7b66d8"]]);
+  var App = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render], ["__scopeId", "data-v-ad7b66d8"]]);
   var index = "";
   /*!
     * vue-router v4.0.14
@@ -6599,14 +6599,14 @@
     return inject(routerKey);
   }
   var WPMetaBox_vue_vue_type_style_index_0_lang = "";
-  const _hoisted_1$6 = { class: "postbox" };
-  const _hoisted_2$4 = { class: "postbox-header !tw-font-semibold !tw-flex !tw-items-center !tw-justify-start !tw-gap-4 !tw-p-4" };
-  const _hoisted_3$4 = {
+  const _hoisted_1$7 = { class: "postbox" };
+  const _hoisted_2$5 = { class: "postbox-header !tw-font-semibold !tw-flex !tw-items-center !tw-justify-start !tw-gap-4 !tw-p-4" };
+  const _hoisted_3$5 = {
     key: 0,
     class: "tw-font-semibold !tw-p-0"
   };
   const _hoisted_4$3 = { class: "inside !tw-p-0 !tw-m-0" };
-  const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     props: {
       title: {
         type: String,
@@ -6616,9 +6616,9 @@
     setup(__props) {
       const props = __props;
       return (_ctx, _cache) => {
-        return openBlock(), createElementBlock("div", _hoisted_1$6, [
-          createBaseVNode("div", _hoisted_2$4, [
-            props.title ? (openBlock(), createElementBlock("h2", _hoisted_3$4, toDisplayString(props.title), 1)) : createCommentVNode("", true),
+        return openBlock(), createElementBlock("div", _hoisted_1$7, [
+          createBaseVNode("div", _hoisted_2$5, [
+            props.title ? (openBlock(), createElementBlock("h2", _hoisted_3$5, toDisplayString(props.title), 1)) : createCommentVNode("", true),
             !props.title ? renderSlot(_ctx.$slots, "title", { key: 1 }) : createCommentVNode("", true)
           ]),
           createBaseVNode("div", _hoisted_4$3, [
@@ -6629,8 +6629,8 @@
     }
   });
   var WPButton_vue_vue_type_style_index_0_scoped_true_lang = "";
-  const _hoisted_1$5 = { class: "tw-flex tw-justify-center tw-items-center" };
-  const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  const _hoisted_1$6 = { class: "tw-flex tw-justify-center tw-items-center" };
+  const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     props: {
       variant: {
         type: String,
@@ -6659,7 +6659,7 @@
           key: 0,
           class: normalizeClass(unref(computedClasses))
         }, [
-          createBaseVNode("div", _hoisted_1$5, [
+          createBaseVNode("div", _hoisted_1$6, [
             renderSlot(_ctx.$slots, "default", {}, void 0, true)
           ])
         ], 2)) : props.as === "a" ? (openBlock(), createElementBlock("a", {
@@ -6671,10 +6671,10 @@
       };
     }
   });
-  var WPButton = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-32ec4a44"]]);
-  const _hoisted_1$4 = { class: "tw-p-4" };
-  const _hoisted_2$3 = /* @__PURE__ */ createBaseVNode("p", { class: "!tw-mb-3" }, " Please consider donating to help with further development. Any contribution is appreciated! ", -1);
-  const _hoisted_3$3 = /* @__PURE__ */ createBaseVNode("svg", {
+  var WPButton = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-32ec4a44"]]);
+  const _hoisted_1$5 = { class: "tw-p-4" };
+  const _hoisted_2$4 = /* @__PURE__ */ createBaseVNode("p", { class: "!tw-mb-3" }, " Please consider donating to help with further development. Any contribution is appreciated! ", -1);
+  const _hoisted_3$4 = /* @__PURE__ */ createBaseVNode("svg", {
     class: "tw-inline tw-align-middle",
     stroke: "currentColor",
     fill: "currentColor",
@@ -6690,13 +6690,13 @@
     })
   ], -1);
   const _hoisted_4$2 = /* @__PURE__ */ createTextVNode(" Donate with PayPal ");
-  const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     setup(__props) {
       return (_ctx, _cache) => {
-        return openBlock(), createBlock(_sfc_main$6, { title: "\u{1F44B} Enjoying this plugin?" }, {
+        return openBlock(), createBlock(_sfc_main$7, { title: "\u{1F44B} Enjoying this plugin?" }, {
           content: withCtx(() => [
-            createBaseVNode("div", _hoisted_1$4, [
-              _hoisted_2$3,
+            createBaseVNode("div", _hoisted_1$5, [
+              _hoisted_2$4,
               createVNode(WPButton, {
                 variant: "secondary",
                 as: "a",
@@ -6704,7 +6704,7 @@
                 target: "_blank"
               }, {
                 default: withCtx(() => [
-                  _hoisted_3$3,
+                  _hoisted_3$4,
                   _hoisted_4$2
                 ]),
                 _: 1
@@ -6716,9 +6716,9 @@
       };
     }
   });
-  const _hoisted_1$3 = { class: "tw-flex tw-gap-4" };
-  const _hoisted_2$2 = { class: "tw-flex-1" };
-  const _hoisted_3$2 = /* @__PURE__ */ createBaseVNode("div", null, [
+  const _hoisted_1$4 = { class: "tw-flex tw-gap-4" };
+  const _hoisted_2$3 = { class: "tw-flex-1" };
+  const _hoisted_3$3 = /* @__PURE__ */ createBaseVNode("div", null, [
     /* @__PURE__ */ createBaseVNode("div", { class: "tw-w-8 tw-h-8 tw-rounded-full tw-bg-primary-500 tw-text-white" }, [
       /* @__PURE__ */ createBaseVNode("svg", {
         class: "tw-h-4 tw-w-4 tw-ml-2 tw-mt-2",
@@ -6741,15 +6741,15 @@
   const _hoisted_6$1 = /* @__PURE__ */ createTextVNode(" Create Shortcode ");
   const _hoisted_7$1 = /* @__PURE__ */ createBaseVNode("div", { class: "tw-relative tw-block tw-w-full tw-min-h-[400px]" }, " content ", -1);
   const _hoisted_8$1 = { class: "tw-w-full md:tw-w-[350px]" };
-  const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     setup(__props) {
       const router2 = useRouter();
       return (_ctx, _cache) => {
-        return openBlock(), createElementBlock("div", _hoisted_1$3, [
-          createBaseVNode("div", _hoisted_2$2, [
-            createVNode(_sfc_main$6, null, {
+        return openBlock(), createElementBlock("div", _hoisted_1$4, [
+          createBaseVNode("div", _hoisted_2$3, [
+            createVNode(_sfc_main$7, null, {
               title: withCtx(() => [
-                _hoisted_3$2,
+                _hoisted_3$3,
                 _hoisted_4$1,
                 createBaseVNode("div", _hoisted_5$1, [
                   createVNode(WPButton, {
@@ -6769,8 +6769,1005 @@
             })
           ]),
           createBaseVNode("div", _hoisted_8$1, [
-            createVNode(_sfc_main$4)
+            createVNode(_sfc_main$5)
           ])
+        ]);
+      };
+    }
+  });
+  function _extends() {
+    _extends = Object.assign || function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends.apply(this, arguments);
+  }
+  var KEYCODE_ENTER = 13;
+  var KEYCODE_TAB = 9;
+  var KEYCODE_BACKSPACE = 8;
+  var KEYCODE_Y = 89;
+  var KEYCODE_Z = 90;
+  var KEYCODE_M = 77;
+  var KEYCODE_PARENS = 57;
+  var KEYCODE_BRACKETS = 219;
+  var KEYCODE_QUOTE = 222;
+  var KEYCODE_BACK_QUOTE = 192;
+  var KEYCODE_ESCAPE = 27;
+  var HISTORY_LIMIT = 100;
+  var HISTORY_TIME_GAP = 3e3;
+  var isWindows = typeof window !== "undefined" && navigator && /* @__PURE__ */ /Win/i.test(navigator.platform);
+  var isMacLike = typeof window !== "undefined" && navigator && /* @__PURE__ */ /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+  var PrismEditor = /* @__PURE__ */ defineComponent({
+    props: {
+      lineNumbers: {
+        type: Boolean,
+        "default": false
+      },
+      autoStyleLineNumbers: {
+        type: Boolean,
+        "default": true
+      },
+      readonly: {
+        type: Boolean,
+        "default": false
+      },
+      modelValue: {
+        type: String,
+        "default": ""
+      },
+      highlight: {
+        type: Function,
+        required: true
+      },
+      tabSize: {
+        type: Number,
+        "default": 2
+      },
+      insertSpaces: {
+        type: Boolean,
+        "default": true
+      },
+      ignoreTabKey: {
+        type: Boolean,
+        "default": false
+      },
+      placeholder: {
+        type: String,
+        "default": ""
+      }
+    },
+    data: function data() {
+      return {
+        capture: true,
+        history: {
+          stack: [],
+          offset: -1
+        },
+        lineNumbersHeight: "20px",
+        codeData: ""
+      };
+    },
+    watch: {
+      modelValue: {
+        immediate: true,
+        handler: function handler(newVal) {
+          if (!newVal) {
+            this.codeData = "";
+          } else {
+            this.codeData = newVal;
+          }
+        }
+      },
+      content: {
+        immediate: true,
+        handler: function handler() {
+          var _this = this;
+          if (this.lineNumbers) {
+            this.$nextTick(function() {
+              _this.setLineNumbersHeight();
+            });
+          }
+        }
+      },
+      lineNumbers: function lineNumbers() {
+        var _this2 = this;
+        this.$nextTick(function() {
+          _this2.styleLineNumbers();
+          _this2.setLineNumbersHeight();
+        });
+      }
+    },
+    computed: {
+      isEmpty: function isEmpty() {
+        return this.codeData.length === 0;
+      },
+      content: function content() {
+        var result = this.highlight(this.codeData) + "<br />";
+        return result;
+      },
+      lineNumbersCount: function lineNumbersCount() {
+        var totalLines = this.codeData.split(/\r\n|\n/).length;
+        return totalLines;
+      }
+    },
+    mounted: function mounted() {
+      this._recordCurrentState();
+      this.styleLineNumbers();
+    },
+    methods: {
+      setLineNumbersHeight: function setLineNumbersHeight() {
+        this.lineNumbersHeight = getComputedStyle(this.$refs.pre).height;
+      },
+      styleLineNumbers: function styleLineNumbers() {
+        if (!this.lineNumbers || !this.autoStyleLineNumbers)
+          return;
+        var $editor = this.$refs.pre;
+        var $lineNumbers = this.$el.querySelector(".prism-editor__line-numbers");
+        var editorStyles = window.getComputedStyle($editor);
+        this.$nextTick(function() {
+          var btlr = "border-top-left-radius";
+          var bblr = "border-bottom-left-radius";
+          if (!$lineNumbers)
+            return;
+          $lineNumbers.style[btlr] = editorStyles[btlr];
+          $lineNumbers.style[bblr] = editorStyles[bblr];
+          $editor.style[btlr] = "0";
+          $editor.style[bblr] = "0";
+          var stylesList = ["background-color", "margin-top", "padding-top", "font-family", "font-size", "line-height"];
+          stylesList.forEach(function(style) {
+            $lineNumbers.style[style] = editorStyles[style];
+          });
+          $lineNumbers.style["margin-bottom"] = "-" + editorStyles["padding-top"];
+        });
+      },
+      _recordCurrentState: function _recordCurrentState() {
+        var input = this.$refs.textarea;
+        if (!input)
+          return;
+        var value = input.value, selectionStart = input.selectionStart, selectionEnd = input.selectionEnd;
+        this._recordChange({
+          value,
+          selectionStart,
+          selectionEnd
+        });
+      },
+      _getLines: function _getLines(text, position) {
+        return text.substring(0, position).split("\n");
+      },
+      _applyEdits: function _applyEdits(record) {
+        var input = this.$refs.textarea;
+        var last = this.history.stack[this.history.offset];
+        if (last && input) {
+          this.history.stack[this.history.offset] = _extends({}, last, {
+            selectionStart: input.selectionStart,
+            selectionEnd: input.selectionEnd
+          });
+        }
+        this._recordChange(record);
+        this._updateInput(record);
+      },
+      _recordChange: function _recordChange(record, overwrite) {
+        if (overwrite === void 0) {
+          overwrite = false;
+        }
+        var _this$history = this.history, stack = _this$history.stack, offset = _this$history.offset;
+        if (stack.length && offset > -1) {
+          this.history.stack = stack.slice(0, offset + 1);
+          var count = this.history.stack.length;
+          if (count > HISTORY_LIMIT) {
+            var extras = count - HISTORY_LIMIT;
+            this.history.stack = stack.slice(extras, count);
+            this.history.offset = Math.max(this.history.offset - extras, 0);
+          }
+        }
+        var timestamp = Date.now();
+        if (overwrite) {
+          var last = this.history.stack[this.history.offset];
+          if (last && timestamp - last.timestamp < HISTORY_TIME_GAP) {
+            var _this$_getLines$pop, _this$_getLines$pop2;
+            var re = /[^a-z0-9]([a-z0-9]+)$/i;
+            var previous = (_this$_getLines$pop = this._getLines(last.value, last.selectionStart).pop()) === null || _this$_getLines$pop === void 0 ? void 0 : _this$_getLines$pop.match(re);
+            var current = (_this$_getLines$pop2 = this._getLines(record.value, record.selectionStart).pop()) === null || _this$_getLines$pop2 === void 0 ? void 0 : _this$_getLines$pop2.match(re);
+            if (previous && current && current[1].startsWith(previous[1])) {
+              this.history.stack[this.history.offset] = _extends({}, record, {
+                timestamp
+              });
+              return;
+            }
+          }
+        }
+        this.history.stack.push(_extends({}, record, {
+          timestamp
+        }));
+        this.history.offset++;
+      },
+      _updateInput: function _updateInput(record) {
+        var input = this.$refs.textarea;
+        if (!input)
+          return;
+        input.value = record.value;
+        input.selectionStart = record.selectionStart;
+        input.selectionEnd = record.selectionEnd;
+        this.$emit("update:modelValue", record.value);
+      },
+      handleChange: function handleChange(e) {
+        var _e$target = e.target, value = _e$target.value, selectionStart = _e$target.selectionStart, selectionEnd = _e$target.selectionEnd;
+        this._recordChange({
+          value,
+          selectionStart,
+          selectionEnd
+        }, true);
+        this.$emit("update:modelValue", value);
+      },
+      _undoEdit: function _undoEdit() {
+        var _this$history2 = this.history, stack = _this$history2.stack, offset = _this$history2.offset;
+        var record = stack[offset - 1];
+        if (record) {
+          this._updateInput(record);
+          this.history.offset = Math.max(offset - 1, 0);
+        }
+      },
+      _redoEdit: function _redoEdit() {
+        var _this$history3 = this.history, stack = _this$history3.stack, offset = _this$history3.offset;
+        var record = stack[offset + 1];
+        if (record) {
+          this._updateInput(record);
+          this.history.offset = Math.min(offset + 1, stack.length - 1);
+        }
+      },
+      handleKeyDown: function handleKeyDown(e) {
+        var tabSize = this.tabSize, insertSpaces = this.insertSpaces, ignoreTabKey = this.ignoreTabKey;
+        this.$emit("keydown", e);
+        if (e.defaultPrevented) {
+          return;
+        }
+        if (e.keyCode === KEYCODE_ESCAPE) {
+          e.target.blur();
+          this.$emit("blur", e);
+        }
+        var _e$target2 = e.target, value = _e$target2.value, selectionStart = _e$target2.selectionStart, selectionEnd = _e$target2.selectionEnd;
+        var tabCharacter = (insertSpaces ? " " : "	").repeat(tabSize);
+        if (e.keyCode === KEYCODE_TAB && !ignoreTabKey && this.capture) {
+          e.preventDefault();
+          if (e.shiftKey) {
+            var linesBeforeCaret = this._getLines(value, selectionStart);
+            var startLine = linesBeforeCaret.length - 1;
+            var endLine = this._getLines(value, selectionEnd).length - 1;
+            var nextValue = value.split("\n").map(function(line2, i) {
+              if (i >= startLine && i <= endLine && line2.startsWith(tabCharacter)) {
+                return line2.substring(tabCharacter.length);
+              }
+              return line2;
+            }).join("\n");
+            if (value !== nextValue) {
+              var startLineText = linesBeforeCaret[startLine];
+              this._applyEdits({
+                value: nextValue,
+                selectionStart: startLineText.startsWith(tabCharacter) ? selectionStart - tabCharacter.length : selectionStart,
+                selectionEnd: selectionEnd - (value.length - nextValue.length)
+              });
+            }
+          } else if (selectionStart !== selectionEnd) {
+            var _linesBeforeCaret = this._getLines(value, selectionStart);
+            var _startLine = _linesBeforeCaret.length - 1;
+            var _endLine = this._getLines(value, selectionEnd).length - 1;
+            var _startLineText = _linesBeforeCaret[_startLine];
+            this._applyEdits({
+              value: value.split("\n").map(function(line2, i) {
+                if (i >= _startLine && i <= _endLine) {
+                  return tabCharacter + line2;
+                }
+                return line2;
+              }).join("\n"),
+              selectionStart: /\S/.test(_startLineText) ? selectionStart + tabCharacter.length : selectionStart,
+              selectionEnd: selectionEnd + tabCharacter.length * (_endLine - _startLine + 1)
+            });
+          } else {
+            var updatedSelection = selectionStart + tabCharacter.length;
+            this._applyEdits({
+              value: value.substring(0, selectionStart) + tabCharacter + value.substring(selectionEnd),
+              selectionStart: updatedSelection,
+              selectionEnd: updatedSelection
+            });
+          }
+        } else if (e.keyCode === KEYCODE_BACKSPACE) {
+          var hasSelection = selectionStart !== selectionEnd;
+          var textBeforeCaret = value.substring(0, selectionStart);
+          if (textBeforeCaret.endsWith(tabCharacter) && !hasSelection) {
+            e.preventDefault();
+            var _updatedSelection = selectionStart - tabCharacter.length;
+            this._applyEdits({
+              value: value.substring(0, selectionStart - tabCharacter.length) + value.substring(selectionEnd),
+              selectionStart: _updatedSelection,
+              selectionEnd: _updatedSelection
+            });
+          }
+        } else if (e.keyCode === KEYCODE_ENTER) {
+          if (selectionStart === selectionEnd) {
+            var line = this._getLines(value, selectionStart).pop();
+            var matches = line === null || line === void 0 ? void 0 : line.match(/^\s+/);
+            if (matches && matches[0]) {
+              e.preventDefault();
+              var indent = "\n" + matches[0];
+              var _updatedSelection2 = selectionStart + indent.length;
+              this._applyEdits({
+                value: value.substring(0, selectionStart) + indent + value.substring(selectionEnd),
+                selectionStart: _updatedSelection2,
+                selectionEnd: _updatedSelection2
+              });
+            }
+          }
+        } else if (e.keyCode === KEYCODE_PARENS || e.keyCode === KEYCODE_BRACKETS || e.keyCode === KEYCODE_QUOTE || e.keyCode === KEYCODE_BACK_QUOTE) {
+          var chars;
+          if (e.keyCode === KEYCODE_PARENS && e.shiftKey) {
+            chars = ["(", ")"];
+          } else if (e.keyCode === KEYCODE_BRACKETS) {
+            if (e.shiftKey) {
+              chars = ["{", "}"];
+            } else {
+              chars = ["[", "]"];
+            }
+          } else if (e.keyCode === KEYCODE_QUOTE) {
+            if (e.shiftKey) {
+              chars = ['"', '"'];
+            } else {
+              chars = ["'", "'"];
+            }
+          } else if (e.keyCode === KEYCODE_BACK_QUOTE && !e.shiftKey) {
+            chars = ["`", "`"];
+          }
+          if (selectionStart !== selectionEnd && chars) {
+            e.preventDefault();
+            this._applyEdits({
+              value: value.substring(0, selectionStart) + chars[0] + value.substring(selectionStart, selectionEnd) + chars[1] + value.substring(selectionEnd),
+              selectionStart,
+              selectionEnd: selectionEnd + 2
+            });
+          }
+        } else if ((isMacLike ? e.metaKey && e.keyCode === KEYCODE_Z : e.ctrlKey && e.keyCode === KEYCODE_Z) && !e.shiftKey && !e.altKey) {
+          e.preventDefault();
+          this._undoEdit();
+        } else if ((isMacLike ? e.metaKey && e.keyCode === KEYCODE_Z && e.shiftKey : isWindows ? e.ctrlKey && e.keyCode === KEYCODE_Y : e.ctrlKey && e.keyCode === KEYCODE_Z && e.shiftKey) && !e.altKey) {
+          e.preventDefault();
+          this._redoEdit();
+        } else if (e.keyCode === KEYCODE_M && e.ctrlKey && (isMacLike ? e.shiftKey : true)) {
+          e.preventDefault();
+          this.capture = !this.capture;
+        }
+      }
+    },
+    render: function render() {
+      var _this3 = this;
+      var lineNumberWidthCalculator = h("div", {
+        "class": "prism-editor__line-width-calc",
+        style: "height: 0px; visibility: hidden; pointer-events: none;"
+      }, "999");
+      var lineNumbers = h("div", {
+        "class": "prism-editor__line-numbers",
+        style: {
+          "min-height": this.lineNumbersHeight
+        },
+        "aria-hidden": "true"
+      }, [lineNumberWidthCalculator, Array.from(Array(this.lineNumbersCount).keys()).map(function(_, index2) {
+        return h("div", {
+          "class": "prism-editor__line-number token comment"
+        }, "" + ++index2);
+      })]);
+      var textarea = h("textarea", {
+        ref: "textarea",
+        onInput: this.handleChange,
+        onKeydown: this.handleKeyDown,
+        onClick: function onClick($event) {
+          _this3.$emit("click", $event);
+        },
+        onKeyup: function onKeyup($event) {
+          _this3.$emit("keyup", $event);
+        },
+        onFocus: function onFocus($event) {
+          _this3.$emit("focus", $event);
+        },
+        onBlur: function onBlur($event) {
+          _this3.$emit("blur", $event);
+        },
+        "class": {
+          "prism-editor__textarea": true,
+          "prism-editor__textarea--empty": this.isEmpty
+        },
+        spellCheck: "false",
+        autocapitalize: "off",
+        autocomplete: "off",
+        autocorrect: "off",
+        "data-gramm": "false",
+        placeholder: this.placeholder,
+        "data-testid": "textarea",
+        readonly: this.readonly,
+        value: this.codeData
+      });
+      var preview = h("pre", {
+        ref: "pre",
+        "class": "prism-editor__editor",
+        "data-testid": "preview",
+        innerHTML: this.content
+      });
+      var editorContainer = h("div", {
+        "class": "prism-editor__container"
+      }, [textarea, preview]);
+      return h("div", {
+        "class": "prism-editor-wrapper"
+      }, [this.lineNumbers && lineNumbers, editorContainer]);
+    }
+  });
+  var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+  var prismCore = { exports: {} };
+  (function(module) {
+    var _self = typeof window !== "undefined" ? window : typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope ? self : {};
+    /**
+     * Prism: Lightweight, robust, elegant syntax highlighting
+     *
+     * @license MIT <https://opensource.org/licenses/MIT>
+     * @author Lea Verou <https://lea.verou.me>
+     * @namespace
+     * @public
+     */
+    var Prism2 = function(_self2) {
+      var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+      var uniqueId = 0;
+      var plainTextGrammar = {};
+      var _ = {
+        manual: _self2.Prism && _self2.Prism.manual,
+        disableWorkerMessageHandler: _self2.Prism && _self2.Prism.disableWorkerMessageHandler,
+        util: {
+          encode: function encode(tokens) {
+            if (tokens instanceof Token) {
+              return new Token(tokens.type, encode(tokens.content), tokens.alias);
+            } else if (Array.isArray(tokens)) {
+              return tokens.map(encode);
+            } else {
+              return tokens.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\u00a0/g, " ");
+            }
+          },
+          type: function(o) {
+            return Object.prototype.toString.call(o).slice(8, -1);
+          },
+          objId: function(obj) {
+            if (!obj["__id"]) {
+              Object.defineProperty(obj, "__id", { value: ++uniqueId });
+            }
+            return obj["__id"];
+          },
+          clone: function deepClone(o, visited) {
+            visited = visited || {};
+            var clone;
+            var id;
+            switch (_.util.type(o)) {
+              case "Object":
+                id = _.util.objId(o);
+                if (visited[id]) {
+                  return visited[id];
+                }
+                clone = {};
+                visited[id] = clone;
+                for (var key in o) {
+                  if (o.hasOwnProperty(key)) {
+                    clone[key] = deepClone(o[key], visited);
+                  }
+                }
+                return clone;
+              case "Array":
+                id = _.util.objId(o);
+                if (visited[id]) {
+                  return visited[id];
+                }
+                clone = [];
+                visited[id] = clone;
+                o.forEach(function(v, i) {
+                  clone[i] = deepClone(v, visited);
+                });
+                return clone;
+              default:
+                return o;
+            }
+          },
+          getLanguage: function(element) {
+            while (element) {
+              var m = lang.exec(element.className);
+              if (m) {
+                return m[1].toLowerCase();
+              }
+              element = element.parentElement;
+            }
+            return "none";
+          },
+          setLanguage: function(element, language) {
+            element.className = element.className.replace(RegExp(lang, "gi"), "");
+            element.classList.add("language-" + language);
+          },
+          currentScript: function() {
+            if (typeof document === "undefined") {
+              return null;
+            }
+            if ("currentScript" in document && 1 < 2) {
+              return document.currentScript;
+            }
+            try {
+              throw new Error();
+            } catch (err) {
+              var src = (/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(err.stack) || [])[1];
+              if (src) {
+                var scripts = document.getElementsByTagName("script");
+                for (var i in scripts) {
+                  if (scripts[i].src == src) {
+                    return scripts[i];
+                  }
+                }
+              }
+              return null;
+            }
+          },
+          isActive: function(element, className, defaultActivation) {
+            var no = "no-" + className;
+            while (element) {
+              var classList = element.classList;
+              if (classList.contains(className)) {
+                return true;
+              }
+              if (classList.contains(no)) {
+                return false;
+              }
+              element = element.parentElement;
+            }
+            return !!defaultActivation;
+          }
+        },
+        languages: {
+          plain: plainTextGrammar,
+          plaintext: plainTextGrammar,
+          text: plainTextGrammar,
+          txt: plainTextGrammar,
+          extend: function(id, redef) {
+            var lang2 = _.util.clone(_.languages[id]);
+            for (var key in redef) {
+              lang2[key] = redef[key];
+            }
+            return lang2;
+          },
+          insertBefore: function(inside, before, insert, root) {
+            root = root || _.languages;
+            var grammar = root[inside];
+            var ret = {};
+            for (var token in grammar) {
+              if (grammar.hasOwnProperty(token)) {
+                if (token == before) {
+                  for (var newToken in insert) {
+                    if (insert.hasOwnProperty(newToken)) {
+                      ret[newToken] = insert[newToken];
+                    }
+                  }
+                }
+                if (!insert.hasOwnProperty(token)) {
+                  ret[token] = grammar[token];
+                }
+              }
+            }
+            var old = root[inside];
+            root[inside] = ret;
+            _.languages.DFS(_.languages, function(key, value) {
+              if (value === old && key != inside) {
+                this[key] = ret;
+              }
+            });
+            return ret;
+          },
+          DFS: function DFS(o, callback, type, visited) {
+            visited = visited || {};
+            var objId = _.util.objId;
+            for (var i in o) {
+              if (o.hasOwnProperty(i)) {
+                callback.call(o, i, o[i], type || i);
+                var property = o[i];
+                var propertyType = _.util.type(property);
+                if (propertyType === "Object" && !visited[objId(property)]) {
+                  visited[objId(property)] = true;
+                  DFS(property, callback, null, visited);
+                } else if (propertyType === "Array" && !visited[objId(property)]) {
+                  visited[objId(property)] = true;
+                  DFS(property, callback, i, visited);
+                }
+              }
+            }
+          }
+        },
+        plugins: {},
+        highlightAll: function(async, callback) {
+          _.highlightAllUnder(document, async, callback);
+        },
+        highlightAllUnder: function(container, async, callback) {
+          var env = {
+            callback,
+            container,
+            selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+          };
+          _.hooks.run("before-highlightall", env);
+          env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
+          _.hooks.run("before-all-elements-highlight", env);
+          for (var i = 0, element; element = env.elements[i++]; ) {
+            _.highlightElement(element, async === true, env.callback);
+          }
+        },
+        highlightElement: function(element, async, callback) {
+          var language = _.util.getLanguage(element);
+          var grammar = _.languages[language];
+          _.util.setLanguage(element, language);
+          var parent = element.parentElement;
+          if (parent && parent.nodeName.toLowerCase() === "pre") {
+            _.util.setLanguage(parent, language);
+          }
+          var code = element.textContent;
+          var env = {
+            element,
+            language,
+            grammar,
+            code
+          };
+          function insertHighlightedCode(highlightedCode) {
+            env.highlightedCode = highlightedCode;
+            _.hooks.run("before-insert", env);
+            env.element.innerHTML = env.highlightedCode;
+            _.hooks.run("after-highlight", env);
+            _.hooks.run("complete", env);
+            callback && callback.call(env.element);
+          }
+          _.hooks.run("before-sanity-check", env);
+          parent = env.element.parentElement;
+          if (parent && parent.nodeName.toLowerCase() === "pre" && !parent.hasAttribute("tabindex")) {
+            parent.setAttribute("tabindex", "0");
+          }
+          if (!env.code) {
+            _.hooks.run("complete", env);
+            callback && callback.call(env.element);
+            return;
+          }
+          _.hooks.run("before-highlight", env);
+          if (!env.grammar) {
+            insertHighlightedCode(_.util.encode(env.code));
+            return;
+          }
+          if (async && _self2.Worker) {
+            var worker = new Worker(_.filename);
+            worker.onmessage = function(evt) {
+              insertHighlightedCode(evt.data);
+            };
+            worker.postMessage(JSON.stringify({
+              language: env.language,
+              code: env.code,
+              immediateClose: true
+            }));
+          } else {
+            insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
+          }
+        },
+        highlight: function(text, grammar, language) {
+          var env = {
+            code: text,
+            grammar,
+            language
+          };
+          _.hooks.run("before-tokenize", env);
+          if (!env.grammar) {
+            throw new Error('The language "' + env.language + '" has no grammar.');
+          }
+          env.tokens = _.tokenize(env.code, env.grammar);
+          _.hooks.run("after-tokenize", env);
+          return Token.stringify(_.util.encode(env.tokens), env.language);
+        },
+        tokenize: function(text, grammar) {
+          var rest = grammar.rest;
+          if (rest) {
+            for (var token in rest) {
+              grammar[token] = rest[token];
+            }
+            delete grammar.rest;
+          }
+          var tokenList = new LinkedList();
+          addAfter(tokenList, tokenList.head, text);
+          matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+          return toArray(tokenList);
+        },
+        hooks: {
+          all: {},
+          add: function(name, callback) {
+            var hooks = _.hooks.all;
+            hooks[name] = hooks[name] || [];
+            hooks[name].push(callback);
+          },
+          run: function(name, env) {
+            var callbacks = _.hooks.all[name];
+            if (!callbacks || !callbacks.length) {
+              return;
+            }
+            for (var i = 0, callback; callback = callbacks[i++]; ) {
+              callback(env);
+            }
+          }
+        },
+        Token
+      };
+      _self2.Prism = _;
+      function Token(type, content, alias, matchedStr) {
+        this.type = type;
+        this.content = content;
+        this.alias = alias;
+        this.length = (matchedStr || "").length | 0;
+      }
+      Token.stringify = function stringify(o, language) {
+        if (typeof o == "string") {
+          return o;
+        }
+        if (Array.isArray(o)) {
+          var s = "";
+          o.forEach(function(e) {
+            s += stringify(e, language);
+          });
+          return s;
+        }
+        var env = {
+          type: o.type,
+          content: stringify(o.content, language),
+          tag: "span",
+          classes: ["token", o.type],
+          attributes: {},
+          language
+        };
+        var aliases = o.alias;
+        if (aliases) {
+          if (Array.isArray(aliases)) {
+            Array.prototype.push.apply(env.classes, aliases);
+          } else {
+            env.classes.push(aliases);
+          }
+        }
+        _.hooks.run("wrap", env);
+        var attributes = "";
+        for (var name in env.attributes) {
+          attributes += " " + name + '="' + (env.attributes[name] || "").replace(/"/g, "&quot;") + '"';
+        }
+        return "<" + env.tag + ' class="' + env.classes.join(" ") + '"' + attributes + ">" + env.content + "</" + env.tag + ">";
+      };
+      function matchPattern(pattern, pos, text, lookbehind) {
+        pattern.lastIndex = pos;
+        var match = pattern.exec(text);
+        if (match && lookbehind && match[1]) {
+          var lookbehindLength = match[1].length;
+          match.index += lookbehindLength;
+          match[0] = match[0].slice(lookbehindLength);
+        }
+        return match;
+      }
+      function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+        for (var token in grammar) {
+          if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+            continue;
+          }
+          var patterns = grammar[token];
+          patterns = Array.isArray(patterns) ? patterns : [patterns];
+          for (var j = 0; j < patterns.length; ++j) {
+            if (rematch && rematch.cause == token + "," + j) {
+              return;
+            }
+            var patternObj = patterns[j];
+            var inside = patternObj.inside;
+            var lookbehind = !!patternObj.lookbehind;
+            var greedy = !!patternObj.greedy;
+            var alias = patternObj.alias;
+            if (greedy && !patternObj.pattern.global) {
+              var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
+              patternObj.pattern = RegExp(patternObj.pattern.source, flags + "g");
+            }
+            var pattern = patternObj.pattern || patternObj;
+            for (var currentNode = startNode.next, pos = startPos; currentNode !== tokenList.tail; pos += currentNode.value.length, currentNode = currentNode.next) {
+              if (rematch && pos >= rematch.reach) {
+                break;
+              }
+              var str = currentNode.value;
+              if (tokenList.length > text.length) {
+                return;
+              }
+              if (str instanceof Token) {
+                continue;
+              }
+              var removeCount = 1;
+              var match;
+              if (greedy) {
+                match = matchPattern(pattern, pos, text, lookbehind);
+                if (!match || match.index >= text.length) {
+                  break;
+                }
+                var from = match.index;
+                var to = match.index + match[0].length;
+                var p2 = pos;
+                p2 += currentNode.value.length;
+                while (from >= p2) {
+                  currentNode = currentNode.next;
+                  p2 += currentNode.value.length;
+                }
+                p2 -= currentNode.value.length;
+                pos = p2;
+                if (currentNode.value instanceof Token) {
+                  continue;
+                }
+                for (var k = currentNode; k !== tokenList.tail && (p2 < to || typeof k.value === "string"); k = k.next) {
+                  removeCount++;
+                  p2 += k.value.length;
+                }
+                removeCount--;
+                str = text.slice(pos, p2);
+                match.index -= pos;
+              } else {
+                match = matchPattern(pattern, 0, str, lookbehind);
+                if (!match) {
+                  continue;
+                }
+              }
+              var from = match.index;
+              var matchStr = match[0];
+              var before = str.slice(0, from);
+              var after = str.slice(from + matchStr.length);
+              var reach = pos + str.length;
+              if (rematch && reach > rematch.reach) {
+                rematch.reach = reach;
+              }
+              var removeFrom = currentNode.prev;
+              if (before) {
+                removeFrom = addAfter(tokenList, removeFrom, before);
+                pos += before.length;
+              }
+              removeRange(tokenList, removeFrom, removeCount);
+              var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
+              currentNode = addAfter(tokenList, removeFrom, wrapped);
+              if (after) {
+                addAfter(tokenList, currentNode, after);
+              }
+              if (removeCount > 1) {
+                var nestedRematch = {
+                  cause: token + "," + j,
+                  reach
+                };
+                matchGrammar(text, tokenList, grammar, currentNode.prev, pos, nestedRematch);
+                if (rematch && nestedRematch.reach > rematch.reach) {
+                  rematch.reach = nestedRematch.reach;
+                }
+              }
+            }
+          }
+        }
+      }
+      function LinkedList() {
+        var head = { value: null, prev: null, next: null };
+        var tail = { value: null, prev: head, next: null };
+        head.next = tail;
+        this.head = head;
+        this.tail = tail;
+        this.length = 0;
+      }
+      function addAfter(list, node, value) {
+        var next = node.next;
+        var newNode = { value, prev: node, next };
+        node.next = newNode;
+        next.prev = newNode;
+        list.length++;
+        return newNode;
+      }
+      function removeRange(list, node, count) {
+        var next = node.next;
+        for (var i = 0; i < count && next !== list.tail; i++) {
+          next = next.next;
+        }
+        node.next = next;
+        next.prev = node;
+        list.length -= i;
+      }
+      function toArray(list) {
+        var array = [];
+        var node = list.head.next;
+        while (node !== list.tail) {
+          array.push(node.value);
+          node = node.next;
+        }
+        return array;
+      }
+      if (!_self2.document) {
+        if (!_self2.addEventListener) {
+          return _;
+        }
+        if (!_.disableWorkerMessageHandler) {
+          _self2.addEventListener("message", function(evt) {
+            var message = JSON.parse(evt.data);
+            var lang2 = message.language;
+            var code = message.code;
+            var immediateClose = message.immediateClose;
+            _self2.postMessage(_.highlight(code, _.languages[lang2], lang2));
+            if (immediateClose) {
+              _self2.close();
+            }
+          }, false);
+        }
+        return _;
+      }
+      var script = _.util.currentScript();
+      if (script) {
+        _.filename = script.src;
+        if (script.hasAttribute("data-manual")) {
+          _.manual = true;
+        }
+      }
+      function highlightAutomaticallyCallback() {
+        if (!_.manual) {
+          _.highlightAll();
+        }
+      }
+      if (!_.manual) {
+        var readyState = document.readyState;
+        if (readyState === "loading" || readyState === "interactive" && script && script.defer) {
+          document.addEventListener("DOMContentLoaded", highlightAutomaticallyCallback);
+        } else {
+          if (window.requestAnimationFrame) {
+            window.requestAnimationFrame(highlightAutomaticallyCallback);
+          } else {
+            window.setTimeout(highlightAutomaticallyCallback, 16);
+          }
+        }
+      }
+      return _;
+    }(_self);
+    if (module.exports) {
+      module.exports = Prism2;
+    }
+    if (typeof commonjsGlobal !== "undefined") {
+      commonjsGlobal.Prism = Prism2;
+    }
+  })(prismCore);
+  const _hoisted_1$3 = { class: "tw-relative tw-block tw-w-full" };
+  const _hoisted_2$2 = ["id", "checked"];
+  const _hoisted_3$2 = ["for"];
+  const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+    props: {
+      checked: {
+        type: Boolean,
+        default: false
+      },
+      label: {
+        type: String,
+        default: ""
+      },
+      id: {
+        type: String,
+        default: ""
+      }
+    },
+    emits: ["change"],
+    setup(__props, { emit }) {
+      const props = __props;
+      return (_ctx, _cache) => {
+        return openBlock(), createElementBlock("div", _hoisted_1$3, [
+          createBaseVNode("input", {
+            id: props.id,
+            type: "checkbox",
+            checked: props.checked,
+            class: "tw-relative tw-inline-block tw-align-top",
+            onInput: _cache[0] || (_cache[0] = (e) => emit("change", e.target.checked))
+          }, null, 40, _hoisted_2$2),
+          props.label ? (openBlock(), createElementBlock("label", {
+            key: 0,
+            for: props.id,
+            class: "tw-relative tw-inline-block tw-ml-1 tw-align-middle"
+          }, toDisplayString(props.label), 9, _hoisted_3$2)) : createCommentVNode("", true)
         ]);
       };
     }
@@ -6854,6 +7851,155 @@
     }
   });
   var WPFormGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-bbb68bcc"]]);
+  var prismeditor_min = "";
+  Prism.languages.markup = {
+    "comment": {
+      pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+      greedy: true
+    },
+    "prolog": {
+      pattern: /<\?[\s\S]+?\?>/,
+      greedy: true
+    },
+    "doctype": {
+      pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+      greedy: true,
+      inside: {
+        "internal-subset": {
+          pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
+          lookbehind: true,
+          greedy: true,
+          inside: null
+        },
+        "string": {
+          pattern: /"[^"]*"|'[^']*'/,
+          greedy: true
+        },
+        "punctuation": /^<!|>$|[[\]]/,
+        "doctype-tag": /^DOCTYPE/i,
+        "name": /[^\s<>'"]+/
+      }
+    },
+    "cdata": {
+      pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+      greedy: true
+    },
+    "tag": {
+      pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+      greedy: true,
+      inside: {
+        "tag": {
+          pattern: /^<\/?[^\s>\/]+/,
+          inside: {
+            "punctuation": /^<\/?/,
+            "namespace": /^[^\s>\/:]+:/
+          }
+        },
+        "special-attr": [],
+        "attr-value": {
+          pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+          inside: {
+            "punctuation": [
+              {
+                pattern: /^=/,
+                alias: "attr-equals"
+              },
+              /"|'/
+            ]
+          }
+        },
+        "punctuation": /\/?>/,
+        "attr-name": {
+          pattern: /[^\s>\/]+/,
+          inside: {
+            "namespace": /^[^\s>\/:]+:/
+          }
+        }
+      }
+    },
+    "entity": [
+      {
+        pattern: /&[\da-z]{1,8};/i,
+        alias: "named-entity"
+      },
+      /&#x?[\da-f]{1,8};/i
+    ]
+  };
+  Prism.languages.markup["tag"].inside["attr-value"].inside["entity"] = Prism.languages.markup["entity"];
+  Prism.languages.markup["doctype"].inside["internal-subset"].inside = Prism.languages.markup;
+  Prism.hooks.add("wrap", function(env) {
+    if (env.type === "entity") {
+      env.attributes["title"] = env.content.replace(/&amp;/, "&");
+    }
+  });
+  Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
+    value: function addInlined(tagName, lang) {
+      var includedCdataInside = {};
+      includedCdataInside["language-" + lang] = {
+        pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+        lookbehind: true,
+        inside: Prism.languages[lang]
+      };
+      includedCdataInside["cdata"] = /^<!\[CDATA\[|\]\]>$/i;
+      var inside = {
+        "included-cdata": {
+          pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+          inside: includedCdataInside
+        }
+      };
+      inside["language-" + lang] = {
+        pattern: /[\s\S]+/,
+        inside: Prism.languages[lang]
+      };
+      var def2 = {};
+      def2[tagName] = {
+        pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function() {
+          return tagName;
+        }), "i"),
+        lookbehind: true,
+        greedy: true,
+        inside
+      };
+      Prism.languages.insertBefore("markup", "cdata", def2);
+    }
+  });
+  Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
+    value: function(attrName, lang) {
+      Prism.languages.markup.tag.inside["special-attr"].push({
+        pattern: RegExp(/(^|["'\s])/.source + "(?:" + attrName + ")" + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, "i"),
+        lookbehind: true,
+        inside: {
+          "attr-name": /^[^\s=]+/,
+          "attr-value": {
+            pattern: /=[\s\S]+/,
+            inside: {
+              "value": {
+                pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+                lookbehind: true,
+                alias: [lang, "language-" + lang],
+                inside: Prism.languages[lang]
+              },
+              "punctuation": [
+                {
+                  pattern: /^=/,
+                  alias: "attr-equals"
+                },
+                /"|'/
+              ]
+            }
+          }
+        }
+      });
+    }
+  });
+  Prism.languages.html = Prism.languages.markup;
+  Prism.languages.mathml = Prism.languages.markup;
+  Prism.languages.svg = Prism.languages.markup;
+  Prism.languages.xml = Prism.languages.extend("markup", {});
+  Prism.languages.ssml = Prism.languages.xml;
+  Prism.languages.atom = Prism.languages.xml;
+  Prism.languages.rss = Prism.languages.xml;
+  var prismTomorrow = "";
   var ViewCreateShortcode_vue_vue_type_style_index_0_lang = "";
   const _hoisted_1 = { class: "tw-flex tw-gap-4" };
   const _hoisted_2 = { class: "tw-flex-1" };
@@ -6878,29 +8024,35 @@
   const _hoisted_6 = { class: "tw-ml-auto" };
   const _hoisted_7 = /* @__PURE__ */ createTextVNode(" Save Changes ");
   const _hoisted_8 = { class: "tw-relative tw-block tw-w-full tw-min-h-[400px] tw-p-6" };
-  const _hoisted_9 = { class: "tw-bg-gray-100 tw-rounded-md tw-p-2 tw-mb-6" };
-  const _hoisted_10 = /* @__PURE__ */ createBaseVNode("span", null, "[", -1);
-  const _hoisted_11 = { class: "tw-ml-1" };
-  const _hoisted_12 = { class: "tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-primary-100" };
-  const _hoisted_13 = /* @__PURE__ */ createTextVNode(' =" ');
-  const _hoisted_14 = { class: "tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-secondary-100" };
-  const _hoisted_15 = /* @__PURE__ */ createTextVNode(' " ');
-  const _hoisted_16 = /* @__PURE__ */ createBaseVNode("span", { class: "tw-ml-1" }, "/]", -1);
-  const _hoisted_17 = { class: "tw-w-full md:tw-w-[350px]" };
-  const _hoisted_18 = /* @__PURE__ */ createBaseVNode("div", null, [
+  const _hoisted_9 = { class: "tw-mt-2 tw-p-2 tw-border tw-border-wp-border-500 tw-border-b-none tw-bg-gray-50 tw-rounded-t-md" };
+  const _hoisted_10 = /* @__PURE__ */ createTextVNode(" Insert Attribute ");
+  const _hoisted_11 = /* @__PURE__ */ createBaseVNode("svg", {
+    class: "tw-w-5 tw-h-5",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, [
+    /* @__PURE__ */ createBaseVNode("path", {
+      "fill-rule": "evenodd",
+      d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+      "clip-rule": "evenodd"
+    })
+  ], -1);
+  const _hoisted_12 = { class: "tw-w-full md:tw-w-[350px]" };
+  const _hoisted_13 = /* @__PURE__ */ createBaseVNode("div", null, [
     /* @__PURE__ */ createBaseVNode("h2", { class: "!tw-p-0" }, " Attributes ")
   ], -1);
-  const _hoisted_19 = { class: "tw-ml-auto" };
-  const _hoisted_20 = /* @__PURE__ */ createTextVNode(" Add Attribute ");
-  const _hoisted_21 = { class: "tw-relative tw-block tw-w-full" };
-  const _hoisted_22 = { class: "tw-relative tw-block tw-overflow-hidden" };
-  const _hoisted_23 = { class: "tw-flex" };
-  const _hoisted_24 = { class: "tw-flex-1 tw-p-4" };
-  const _hoisted_25 = { class: "tw-w-12 tw-bg-gray-50 tw-border-l tw-border-l-wp-border-500" };
-  const _hoisted_26 = { class: "tw-flex tw-h-full tw-items-center" };
-  const _hoisted_27 = { class: "tw-w-full" };
-  const _hoisted_28 = ["onClick"];
-  const _hoisted_29 = /* @__PURE__ */ createBaseVNode("svg", {
+  const _hoisted_14 = { class: "tw-ml-auto" };
+  const _hoisted_15 = /* @__PURE__ */ createTextVNode(" Add Attribute ");
+  const _hoisted_16 = { class: "tw-relative tw-block tw-w-full" };
+  const _hoisted_17 = { class: "tw-relative tw-block tw-overflow-hidden" };
+  const _hoisted_18 = { class: "tw-flex" };
+  const _hoisted_19 = { class: "tw-flex-1 tw-p-4" };
+  const _hoisted_20 = { class: "tw-w-12 tw-bg-gray-50 tw-border-l tw-border-l-wp-border-500" };
+  const _hoisted_21 = { class: "tw-flex tw-h-full tw-items-center" };
+  const _hoisted_22 = { class: "tw-w-full" };
+  const _hoisted_23 = ["onClick"];
+  const _hoisted_24 = /* @__PURE__ */ createBaseVNode("svg", {
     class: "tw-m-auto tw-5 tw-h-5",
     fill: "currentColor",
     viewBox: "0 0 20 20",
@@ -6912,18 +8064,19 @@
       "clip-rule": "evenodd"
     })
   ], -1);
-  const _hoisted_30 = [
-    _hoisted_29
+  const _hoisted_25 = [
+    _hoisted_24
   ];
   const _sfc_main = /* @__PURE__ */ defineComponent({
     setup(__props) {
       const router2 = useRouter();
       const shortCodeDetails = ref({
         id: "",
-        title: "my_button",
+        title: "button",
+        code: '<a class="btn" href="{URL}">\n	{text}\n</a>\n\n\n\n\n\n\n\n\n\n\n',
         attributes: [
           { id: "1", name: "text", default: "Click Me" },
-          { id: "2", name: "color", default: "#ff0000" }
+          { id: "2", name: "URL", default: "/" }
         ]
       });
       const removeSpecialCharacters = (value) => {
@@ -6945,7 +8098,7 @@
       return (_ctx, _cache) => {
         return openBlock(), createElementBlock("div", _hoisted_1, [
           createBaseVNode("div", _hoisted_2, [
-            createVNode(_sfc_main$6, null, {
+            createVNode(_sfc_main$7, null, {
               title: withCtx(() => [
                 createBaseVNode("div", null, [
                   createVNode(WPButton, {
@@ -6971,22 +8124,6 @@
               ]),
               content: withCtx(() => [
                 createBaseVNode("div", _hoisted_8, [
-                  createBaseVNode("p", _hoisted_9, [
-                    _hoisted_10,
-                    createBaseVNode("span", _hoisted_11, toDisplayString(shortCodeDetails.value.title), 1),
-                    (openBlock(true), createElementBlock(Fragment, null, renderList(shortCodeDetails.value.attributes.filter((attribute) => attribute.name), (attribute) => {
-                      return openBlock(), createElementBlock("span", {
-                        key: attribute.id,
-                        class: "tw-ml-1"
-                      }, [
-                        createBaseVNode("span", _hoisted_12, toDisplayString(attribute.name.toLowerCase()), 1),
-                        _hoisted_13,
-                        createBaseVNode("span", _hoisted_14, toDisplayString(attribute.default), 1),
-                        _hoisted_15
-                      ]);
-                    }), 128)),
-                    _hoisted_16
-                  ]),
                   createVNode(WPFormGroup, {
                     title: "Shortcode Name",
                     description: "No spaces or special characters allowed",
@@ -7002,28 +8139,67 @@
                       }, null, 8, ["value"])
                     ]),
                     _: 1
+                  }),
+                  createVNode(WPFormGroup, {
+                    class: "tw-mt-6",
+                    title: "Enable Enclosed Content",
+                    description: "If enabled, you can insert content inbetween the starting and ending tags of your shortcode.",
+                    for: "shortCodeEnableEnclosedContent"
+                  }, {
+                    default: withCtx(() => [
+                      createVNode(_sfc_main$3, {
+                        id: "shortCodeEnableEnclosedContent",
+                        label: "Enable"
+                      })
+                    ]),
+                    _: 1
+                  }),
+                  createVNode(WPFormGroup, {
+                    class: "tw-mt-6",
+                    title: "HTML Content",
+                    description: "Please enter the HTML content you want to display inside the shortcode. Please ensure your HTML is valid."
+                  }, {
+                    default: withCtx(() => [
+                      createBaseVNode("div", _hoisted_9, [
+                        createVNode(WPButton, { small: "" }, {
+                          default: withCtx(() => [
+                            _hoisted_10,
+                            _hoisted_11
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      createVNode(unref(PrismEditor), {
+                        modelValue: shortCodeDetails.value.code,
+                        "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => shortCodeDetails.value.code = $event),
+                        class: "code-editor !tw-h-[330px]",
+                        highlight: (code) => unref(prismCore.exports.highlight)(code, unref(prismCore.exports.languages).markup),
+                        "line-numbers": ""
+                      }, null, 8, ["modelValue", "highlight"])
+                    ]),
+                    _: 1
                   })
                 ])
               ]),
               _: 1
             })
           ]),
-          createBaseVNode("div", _hoisted_17, [
-            createVNode(_sfc_main$6, null, {
+          createBaseVNode("div", _hoisted_12, [
+            createVNode(_sfc_main$7, null, {
               title: withCtx(() => [
-                _hoisted_18,
-                createBaseVNode("div", _hoisted_19, [
+                _hoisted_13,
+                createBaseVNode("div", _hoisted_14, [
                   createVNode(WPButton, { onClick: handleAddAttribute }, {
                     default: withCtx(() => [
-                      _hoisted_20
+                      _hoisted_15
                     ]),
                     _: 1
                   })
                 ])
               ]),
               content: withCtx(() => [
-                createBaseVNode("div", _hoisted_21, [
-                  createBaseVNode("div", _hoisted_22, [
+                createBaseVNode("div", _hoisted_16, [
+                  createBaseVNode("div", _hoisted_17, [
                     createVNode(TransitionGroup, {
                       name: "attribute-list",
                       tag: "div",
@@ -7035,8 +8211,8 @@
                             key: attribute.id,
                             class: "tw-relative tw-block tw-w-full"
                           }, [
-                            createBaseVNode("div", _hoisted_23, [
-                              createBaseVNode("div", _hoisted_24, [
+                            createBaseVNode("div", _hoisted_18, [
+                              createBaseVNode("div", _hoisted_19, [
                                 createVNode(WPFormGroup, {
                                   title: "Attribute name",
                                   required: ""
@@ -7068,14 +8244,14 @@
                                   _: 2
                                 }, 1024)
                               ]),
-                              createBaseVNode("div", _hoisted_25, [
-                                createBaseVNode("div", _hoisted_26, [
-                                  createBaseVNode("div", _hoisted_27, [
+                              createBaseVNode("div", _hoisted_20, [
+                                createBaseVNode("div", _hoisted_21, [
+                                  createBaseVNode("div", _hoisted_22, [
                                     createBaseVNode("button", {
                                       href: "#",
                                       class: "tw-flex tw-h-12 tw-w-full tw-text-center hover:tw-text-rose-600 focus:tw-text-rose-600",
                                       onClick: () => handleRemoveAttribute(attribute.id)
-                                    }, _hoisted_30, 8, _hoisted_28)
+                                    }, _hoisted_25, 8, _hoisted_23)
                                   ])
                                 ])
                               ])
@@ -7090,7 +8266,7 @@
               ]),
               _: 1
             }),
-            createVNode(_sfc_main$4)
+            createVNode(_sfc_main$5)
           ])
         ]);
       };
@@ -7102,7 +8278,7 @@
       {
         path: "/",
         alias: "/home",
-        component: _sfc_main$3
+        component: _sfc_main$4
       },
       {
         path: "/create",

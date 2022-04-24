@@ -9,12 +9,16 @@
   "dependencies": {
     "@headlessui/vue": "^1.5.0",
     "axios": "^0.26.1",
+    "codemirror": "^5.65.3",
+    "prismjs": "^1.28.0",
     "vue": "^3.2.25",
+    "vue-prism-editor": "^2.0.0-alpha.2",
     "vue-router": "^4.0.14",
     "vue-smooth-reflow": "^0.1.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.20.6",
+    "@types/prismjs": "^1.26.0",
     "@vitejs/plugin-vue": "^2.3.0",
     "autoprefixer": "^10.4.4",
     "eslint": "^8.13.0",

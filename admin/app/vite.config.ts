@@ -19,6 +19,6 @@ export default defineConfig({
     },
     minify: false,
     outDir: './../dist',
-    emptyOutDir: true,
+    emptyOutDir: false,
   },
 })

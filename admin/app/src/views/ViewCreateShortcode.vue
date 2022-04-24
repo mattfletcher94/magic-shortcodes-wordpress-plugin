@@ -2,12 +2,19 @@
 import { useRouter } from 'vue-router'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import axios from 'axios'
+import { PrismEditor } from 'vue-prism-editor'
+// @ts-expect-error No types
+import { highlight, languages } from 'prismjs/components/prism-core'
 import WPMetaBox from '../components/WPMetaBox.vue'
 import WPButton from '../components/WPButton.vue'
+import WPCheckbox from '../components/WPCheckbox.vue'
 import WPMetaBoxDonate from '../components/WPMetaBoxDonate.vue'
 import WPInput from '../components/WPInput.vue'
 import WPFormGroup from '../components/WPFormGroup.vue'
 import type { ShortcodeDetails } from '../models/ShortcodeDetails'
+import 'vue-prism-editor/dist/prismeditor.min.css' // import the styles somewhere
+import 'prismjs/components/prism-markup'
+import 'prismjs/themes/prism-tomorrow.css'
 
 const magicPopupsAjax = (window as any).magic_shortcodes_ajax as { url: string; nonce: string }
 
@@ -15,10 +22,11 @@ const router = useRouter()
 
 const shortCodeDetails = ref<ShortcodeDetails>({
   id: '',
-  title: 'my_button',
+  title: 'button',
+  code: '<a class="btn" href="{URL}">\n\t{text}\n</a>\n\n\n\n\n\n\n\n\n\n\n',
   attributes: [
     { id: '1', name: 'text', default: 'Click Me' },
-    { id: '2', name: 'color', default: '#ff0000' },
+    { id: '2', name: 'URL', default: '/' },
   ],
 })
 
@@ -42,6 +50,10 @@ const handleRemoveAttribute = (attributeId: string) => {
   shortCodeDetails.value.attributes = shortCodeDetails.value.attributes.filter(
     attribute => attribute.id !== attributeId,
   )
+}
+
+const highlighter = (code: string) => {
+  return highlight(code, languages.markup)
 }
 
 </script>
@@ -74,36 +86,37 @@ const handleRemoveAttribute = (attributeId: string) => {
         </template>
         <template #content>
           <div class="tw-relative tw-block tw-w-full tw-min-h-[400px] tw-p-6">
-            <p class="tw-bg-gray-100 tw-rounded-md tw-p-2 tw-mb-6">
-              <span>[</span>
-              <span class="tw-ml-1">{{ shortCodeDetails.title }}</span>
-              <span
-                v-for="attribute in shortCodeDetails.attributes.filter(attribute => attribute.name)"
-                :key="attribute.id"
-                class="tw-ml-1"
-              >
-                <span class="tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-primary-100">
-                  {{ attribute.name.toLowerCase() }}
-                </span>
-                ="
-                <span class="tw-px-1 tw-py-0.5 tw-rounded-md tw-bg-secondary-100">
-                  {{ attribute.default }}
-                </span>
-                "
-              </span>
-              <span class="tw-ml-1">/]</span>
-            </p>
-            <WPFormGroup
-              title="Shortcode Name"
-              description="No spaces or special characters allowed"
-              required
-            >
+            <WPFormGroup title="Shortcode Name" description="No spaces or special characters allowed" required>
               <WPInput
-                type="text"
-                placeholder="E.g. 'my_button'"
-                :value="shortCodeDetails.title"
+                type="text" placeholder="E.g. 'my_button'" :value="shortCodeDetails.title"
                 @change="(value) => shortCodeDetails.title = value"
                 @blur="(value) => shortCodeDetails.title = replaceSpaces(removeSpecialCharacters(value)).toLowerCase()"
+              />
+            </WPFormGroup>
+            <WPFormGroup
+              class="tw-mt-6"
+              title="Enable Enclosed Content"
+              description="If enabled, you can insert content inbetween the starting and ending tags of your shortcode."
+              for="shortCodeEnableEnclosedContent"
+            >
+              <WPCheckbox id="shortCodeEnableEnclosedContent" label="Enable" />
+            </WPFormGroup>
+            <WPFormGroup
+              class="tw-mt-6"
+              title="HTML Content"
+              description="Please enter the HTML content you want to display inside the shortcode. Please ensure your HTML is valid."
+            >
+              <div class="tw-mt-2 tw-p-2 tw-border tw-border-wp-border-500 tw-border-b-none tw-bg-gray-50 tw-rounded-t-md">
+                <WPButton small>
+                  Insert Attribute
+                  <svg class="tw-w-5 tw-h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </WPButton>
+              </div>
+              <prism-editor
+                v-model="shortCodeDetails.code"
+                class="code-editor !tw-h-[330px]"
+                :highlight="(code: string) => highlight(code, languages.markup)"
+                line-numbers
               />
             </WPFormGroup>
           </div>
@@ -127,33 +140,23 @@ const handleRemoveAttribute = (attributeId: string) => {
         <template #content>
           <div class="tw-relative tw-block tw-w-full">
             <div class="tw-relative tw-block tw-overflow-hidden">
-              <TransitionGroup
-                name="attribute-list"
-                tag="div"
-                class="tw-divide-y tw-divide-wp-border-500"
-              >
+              <TransitionGroup name="attribute-list" tag="div" class="tw-divide-y tw-divide-wp-border-500">
                 <div
-                  v-for="(attribute) in shortCodeDetails.attributes"
-                  :key="attribute.id"
+                  v-for="(attribute) in shortCodeDetails.attributes" :key="attribute.id"
                   class="tw-relative tw-block tw-w-full"
                 >
                   <div class="tw-flex">
                     <div class="tw-flex-1 tw-p-4">
                       <WPFormGroup title="Attribute name" required>
                         <WPInput
-                          type="text"
-                          placeholder="Attribute name..."
-                          :value="attribute.name"
-                          required
+                          type="text" placeholder="Attribute name..." :value="attribute.name" required
                           @change="(val) => attribute.name = val"
                           @blur="(val) => attribute.name = replaceSpaces(removeSpecialCharacters(val))"
                         />
                       </WPFormGroup>
                       <WPFormGroup class="tw-mt-2" title="Default Value">
                         <WPInput
-                          type="text"
-                          placeholder="Default value..."
-                          :value="attribute.default"
+                          type="text" placeholder="Default value..." :value="attribute.default"
                           @change="(val) => attribute.default = val"
                         />
                       </WPFormGroup>
@@ -166,7 +169,16 @@ const handleRemoveAttribute = (attributeId: string) => {
                             class="tw-flex tw-h-12 tw-w-full tw-text-center hover:tw-text-rose-600 focus:tw-text-rose-600"
                             @click="() => handleRemoveAttribute(attribute.id)"
                           >
-                            <svg class=" tw-m-auto tw-5 tw-h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                            <svg
+                              class=" tw-m-auto tw-5 tw-h-5" fill="currentColor" viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"
+                              />
+                            </svg>
                           </button>
                         </div>
                       </div>
@@ -187,14 +199,32 @@ const handleRemoveAttribute = (attributeId: string) => {
 .attribute-list-move,
 .attribute-list-enter-active,
 .attribute-list-leave-active {
-  transition: all 0.3s ease!important;
+  transition: all 0.3s ease !important;
 }
+
 .attribute-list-enter-from,
 .attribute-list-leave-to {
-  transform: translateY(6px)!important;
-  opacity: 0!important;
+  transform: translateY(6px) !important;
+  opacity: 0 !important;
 }
+
 .attribute-list-leave-active {
-  position: absolute!important;
+  position: absolute !important;
 }
+
+.code-editor {
+  background: #2d2d2d;
+  color: #ccc;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 5px;
+}
+
+.prism-editor__textarea:focus {
+  outline: none!important;
+  border-color: transparent!important;
+  box-shadow: none!important;
+}
+
 </style>

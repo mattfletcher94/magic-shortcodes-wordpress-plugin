@@ -1,6 +1,3 @@
-<script setup lang="ts">
-
-</script>
 <template>
   <div class="wrap">
     <div id="poststuff">
@@ -14,13 +11,17 @@
 </template>
 
 <style>
-#app {
+#magicShortcodesApp * {
+  position: relative;
+}
+
+#magicShortcodesApp {
   position: relative;
   display: block;
   width: 100%;
 }
 
-#app svg {
+#magicShortcodesApp svg {
   display: inline;
   vertical-align: middle;
 }

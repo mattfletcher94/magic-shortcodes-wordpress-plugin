@@ -21,18 +21,18 @@ const emit = defineEmits<{
 
 </script>
 <template>
-  <div class="tw-relative tw-block tw-w-full">
+  <div class="relative block w-full">
     <input
       :id="props.id"
       type="checkbox"
       :checked="props.checked"
-      class="tw-relative tw-inline-block tw-align-top"
+      class="relative inline-block align-top"
       @input="(e) => emit('change', (e.target as HTMLInputElement).checked)"
     >
     <label
       v-if="props.label"
       :for="props.id"
-      class="tw-relative tw-inline-block tw-ml-1 tw-align-middle"
+      class="relative inline-block ml-1 align-middle"
     >
       {{ props.label }}
     </label>

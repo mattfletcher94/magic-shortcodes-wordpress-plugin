@@ -59,7 +59,7 @@ class Magic_Shortcodes_Admin
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		if ($_GET['page'] == 'magic-shortcodes-admin') {
+		if (isset($_GET['page']) && $_GET['page'] == 'magic-shortcodes-admin') {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'dist/style.css', array(), $this->version, 'all' );
 		}
 	}
@@ -70,8 +70,7 @@ class Magic_Shortcodes_Admin
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		if ($_GET['page'] == 'magic-shortcodes-admin') {
-			wp_enqueue_script( 'prism', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js', array(), $this->version, true);
+		if (isset($_GET['page']) && $_GET['page'] == 'magic-shortcodes-admin') {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'dist/main.js', array(), $this->version, true);
 			wp_localize_script($this->plugin_name, 'magic_shortcodes_ajax', array(
 				'url' => admin_url('admin-ajax.php'),

@@ -28,7 +28,7 @@ const computedClasses = computed(() => {
 </script>
 <template>
   <button v-if="props.as === 'button'" :class="computedClasses">
-    <div class="tw-flex tw-justify-center tw-items-center">
+    <div class="flex justify-center items-center">
       <slot />
     </div>
   </button>
@@ -39,6 +39,7 @@ const computedClasses = computed(() => {
 
 <style scoped>
 .button.button--custom {
+  position: relative;
   min-height: 0px !important;
   padding: 6px 10px !important;
   line-height: 1.5!important;

@@ -19,7 +19,7 @@ const emit = defineEmits<{
 <template>
   <textarea
     :value="props.value"
-    class="tw-relative tw-block tw-w-full !tw-p-[8px]"
+    class="relative block w-full !p-[8px]"
     :rows="props.rows"
     @input="(e) => emit('change', (e.target as HTMLInputElement).value)"
   />

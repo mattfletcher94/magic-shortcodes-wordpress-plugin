@@ -5,6 +5,7 @@ interface ShortcodeDetails {
   attributes: Array<{
     id: string
     name: string
+    type: 'custom' | 'post_title'
     default: string
   }>
 }

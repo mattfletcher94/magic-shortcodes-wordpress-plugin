@@ -20,7 +20,7 @@ const emit = defineEmits<{
 
 <template>
   <select
-    class="tw-relative tw-block tw-w-full !tw-max-w-none"
+    class="relative block w-full !max-w-none"
     :value="props.value"
     @input="(e) => emit('change', (e.target as HTMLInputElement).value)"
   >

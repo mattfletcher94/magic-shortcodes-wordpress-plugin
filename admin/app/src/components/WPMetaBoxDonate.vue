@@ -5,8 +5,8 @@ import WPButton from './WPButton.vue'
 <template>
   <WPMetaBox title="👋 Enjoying this plugin?">
     <template #content>
-      <div class="tw-p-4">
-        <p class="!tw-mb-3">
+      <div class="p-4">
+        <p class="!mb-3">
           Please consider donating to help with further development. Any contribution is appreciated!
         </p>
         <WPButton
@@ -14,7 +14,7 @@ import WPButton from './WPButton.vue'
           target="_blank"
         >
           <svg
-            class="tw-inline tw-align-middle" stroke="currentColor" fill="currentColor" stroke-width="0"
+            class="inline align-middle" stroke="currentColor" fill="currentColor" stroke-width="0"
             viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
           >
             <path

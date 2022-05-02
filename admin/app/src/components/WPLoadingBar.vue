@@ -1,6 +1,6 @@
 <template>
-  <div class="wp-loading-bar tw-relative tw-block tw-w-full tw-bg-white tw-overflow-hidden tw-h-[4px]">
-    <div class="wp-loading-bar__bar !tw-absolute tw-block tw-bg-primary-500 tw-h-[4px]" />
+  <div class="wp-loading-bar relative block w-full bg-white overflow-hidden h-[4px]">
+    <div class="wp-loading-bar__bar !absolute block bg-primary-500 h-[4px]" />
   </div>
 </template>
 

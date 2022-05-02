@@ -16,7 +16,7 @@ const emit = defineEmits<{
 <template>
   <input
     :value="props.value"
-    class="tw-relative tw-block tw-w-full"
+    class="relative block w-full"
     @input="(e) => emit('change', (e.target as HTMLInputElement).value)"
     @blur="(e) => emit('blur', (e.target as HTMLInputElement).value)"
   >

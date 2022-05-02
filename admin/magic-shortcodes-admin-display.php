@@ -12,4 +12,4 @@
  * @subpackage Magic_Shortcodes/admin
  */
 ?>
-<div id="app"></div>
+<div id="magicShortcodesApp"></div>

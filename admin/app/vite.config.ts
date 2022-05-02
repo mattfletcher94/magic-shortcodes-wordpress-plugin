@@ -17,7 +17,7 @@ export default defineConfig({
       entry: 'src/main.ts',
       formats: ['iife'],
     },
-    minify: false,
+    minify: true,
     outDir: './../dist',
     emptyOutDir: false,
   },
